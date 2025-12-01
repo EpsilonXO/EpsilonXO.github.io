@@ -1,0 +1,384 @@
+tsx
+import { Hero } from "./components/Hero";
+import { Stats } from "./components/Stats";
+import { About } from "./components/About";
+import { Gallery } from "./components/Gallery";
+import { Achievements } from "./components/Achievements";
+import { Contact } from "./components/Contact";
+export default function App() {
+  return (
+    <div className="min-h-screen bg-black text-white">
+      <Hero />
+      <Stats />
+      <About />
+      <Gallery />
+      <Achievements />
+      <Contact />
+    </div>
+  );
+}
+
+components/Hero.tsx
+tsx
+import { Instagram, Youtube, Twitter } from "lucide-react";
+import { ImageWithFallback } from "./figma/ImageWithFallback";
+export function Hero() {
+  return (
+    <div className="relative h-screen">
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <ImageWithFallback
+          src="https://images.unsplash.com/photo-1759476533830-8cc4b219f0c8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhdGhsZXRlJTIwZml0bmVzcyUyMHBvcnRyYWl0fGVufDF8fHx8MTc2NDU2NDI2NXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+          alt="Athlete portrait"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black"></div>
+      </div>
+      {/* Content */}
+      <div className="relative z-10 h-full flex flex-col justify-between p-8 md:p-12 lg:p-16">
+        {/* Navigation */}
+        <nav className="flex justify-between items-center">
+          <div className="text-2xl tracking-wider">APEX</div>
+          <div className="flex gap-6">
+            <a href="#about" className="hover:text-red-500 transition-colors">About</a>
+            <a href="#gallery" className="hover:text-red-500 transition-colors">Gallery</a>
+            <a href="#contact" className="hover:text-red-500 transition-colors">Contact</a>
+          </div>
+        </nav>
+        {/* Hero Content */}
+        <div className="flex-1 flex flex-col justify-center max-w-4xl">
+          <div className="space-y-6">
+            <div className="text-red-500 tracking-widest uppercase">Professional Athlete & Influencer</div>
+            <h1 className="text-6xl md:text-7xl lg:text-8xl tracking-tight">
+              JORDAN
+              <br />
+              MATTHEWS
+            </h1>
+            <p className="text-xl text-gray-300 max-w-2xl">
+              Transforming lives through fitness. Champion bodybuilder, certified trainer, and your guide to peak performance.
+            </p>
+            <div className="flex gap-4 pt-4">
+              <button className="bg-red-500 hover:bg-red-600 transition-colors px-8 py-4 uppercase tracking-wider">
+                Work With Me
+              </button>
+              <button className="border-2 border-white hover:bg-white hover:text-black transition-colors px-8 py-4 uppercase tracking-wider">
+                My Programs
+              </button>
+            </div>
+          </div>
+        </div>
+        {/* Social Links */}
+        <div className="flex gap-6">
+          <a href="#" className="hover:text-red-500 transition-colors">
+            <Instagram className="w-6 h-6" />
+          </a>
+          <a href="#" className="hover:text-red-500 transition-colors">
+            <Youtube className="w-6 h-6" />
+          </a>
+          <a href="#" className="hover:text-red-500 transition-colors">
+            <Twitter className="w-6 h-6" />
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+components/Stats.tsx
+tsx
+export function Stats() {
+  const stats = [
+    { value: "2M+", label: "Followers" },
+    { value: "500+", label: "Clients Trained" },
+    { value: "15+", label: "Years Experience" },
+    { value: "50+", label: "Competition Wins" },
+  ];
+  return (
+    <div className="py-20 px-8 md:px-12 lg:px-16 bg-gradient-to-b from-black to-zinc-900">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+          {stats.map((stat, index) => (
+            <div key={index} className="text-center">
+              <div className="text-4xl md:text-5xl lg:text-6xl text-red-500 mb-2">
+                {stat.value}
+              </div>
+              <div className="text-gray-400 uppercase tracking-wider">
+                {stat.label}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+components/About.tsx
+tsx
+import { ImageWithFallback } from "./figma/ImageWithFallback";
+export function About() {
+  return (
+    <div id="about" className="py-24 px-8 md:px-12 lg:px-16 bg-zinc-900">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="space-y-6">
+            <div className="text-red-500 uppercase tracking-widest">About Me</div>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl">
+              Building Champions,
+              <br />
+              One Rep at a Time
+            </h2>
+            <div className="space-y-4 text-gray-300">
+              <p>
+                With over 15 years in the fitness industry, I've dedicated my life to pushing the boundaries of human performance. From winning my first competition at 22 to training elite athletes and everyday warriors, my mission has always been the same: help you become the best version of yourself.
+              </p>
+              <p>
+                My journey started in a small-town gym with nothing but a dream and determination. Today, I'm proud to have built a community of 2 million+ followers who trust me to guide them on their fitness journey.
+              </p>
+              <p>
+                Whether you're looking to compete, build muscle, lose fat, or simply improve your health, I've developed proven programs that deliver real results. No gimmicks, no shortcuts—just hard work, science-backed methods, and unwavering support.
+              </p>
+            </div>
+            <button className="bg-red-500 hover:bg-red-600 transition-colors px-8 py-4 uppercase tracking-wider mt-6">
+              Read My Story
+            </button>
+          </div>
+          <div className="relative">
+            <div className="relative h-[600px] rounded-lg overflow-hidden">
+              <ImageWithFallback
+                src="https://images.unsplash.com/photo-1605296867724-fa87a8ef53fd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaXRuZXNzJTIwbW90aXZhdGlvbnxlbnwxfHx8fDE3NjQ1MjcwODh8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                alt="Training session"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="absolute -bottom-8 -right-8 bg-red-500 p-8 rounded-lg">
+              <div className="text-4xl">💪</div>
+              <div className="mt-2">Certified</div>
+              <div className="uppercase tracking-wider">Trainer</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+components/Gallery.tsx
+tsx
+import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { Play } from "lucide-react";
+export function Gallery() {
+  const images = [
+    {
+      url: "https://images.unsplash.com/photo-1669807164466-10a6584a067e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxneW0lMjB3b3Jrb3V0JTIwdHJhaW5pbmd8ZW58MXx8fHwxNzY0NTUyODU2fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      type: "image",
+      caption: "Leg Day Intensity"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1745103598675-85df75773d12?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhdGhsZXRpYyUyMHNwb3J0JTIwYWN0aW9ufGVufDF8fHx8MTc2NDU2NDI2NXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      type: "video",
+      caption: "Full Body Circuit"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1746003625470-8dde780622f8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhdGhsZXRlJTIwdHJhaW5pbmclMjBvdXRkb29yfGVufDF8fHx8MTc2NDUyNTMzMnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      type: "image",
+      caption: "Outdoor Training"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1676109829011-a9f0f3e40f00?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxneW0lMjBlcXVpcG1lbnQlMjB3ZWlnaHRzfGVufDF8fHx8MTc2NDUzMjU2Nnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      type: "image",
+      caption: "Equipment Mastery"
+    },
+  ];
+  return (
+    <div id="gallery" className="py-24 px-8 md:px-12 lg:px-16 bg-black">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <div className="text-red-500 uppercase tracking-widest mb-4">Gallery</div>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl">
+            Training In Action
+          </h2>
+        </div>
+        <div className="grid md:grid-cols-2 gap-6">
+          {images.map((item, index) => (
+            <div key={index} className="relative group overflow-hidden rounded-lg aspect-[4/3] cursor-pointer">
+              <ImageWithFallback
+                src={item.url}
+                alt={item.caption}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <p className="text-xl">{item.caption}</p>
+                </div>
+              </div>
+              {item.type === "video" && (
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="bg-red-500 rounded-full p-4 group-hover:scale-110 transition-transform">
+                    <Play className="w-8 h-8 fill-white" />
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+        <div className="text-center mt-12">
+          <button className="border-2 border-white hover:bg-white hover:text-black transition-colors px-8 py-4 uppercase tracking-wider">
+            View More Content
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+components/Achievements.tsx
+tsx
+import { Trophy, Award, Star, Target } from "lucide-react";
+export function Achievements() {
+  const achievements = [
+    {
+      icon: Trophy,
+      title: "Mr. Olympia Competitor",
+      year: "2020-2024",
+      description: "Competed at the highest level of professional bodybuilding"
+    },
+    {
+      icon: Award,
+      title: "National Champion",
+      year: "2019",
+      description: "First place, Men's Open Division"
+    },
+    {
+      icon: Star,
+      title: "Fitness Influencer of the Year",
+      year: "2022",
+      description: "Recognized for impact and community building"
+    },
+    {
+      icon: Target,
+      title: "Transformation Specialist",
+      year: "2015-Present",
+      description: "500+ successful client transformations"
+    }
+  ];
+  return (
+    <div className="py-24 px-8 md:px-12 lg:px-16 bg-zinc-900">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <div className="text-red-500 uppercase tracking-widest mb-4">Achievements</div>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl">
+            Proven Track Record
+          </h2>
+        </div>
+        <div className="grid md:grid-cols-2 gap-8">
+          {achievements.map((achievement, index) => {
+            const Icon = achievement.icon;
+            return (
+              <div key={index} className="bg-black p-8 rounded-lg border border-zinc-800 hover:border-red-500 transition-colors">
+                <div className="flex items-start gap-6">
+                  <div className="bg-red-500 p-4 rounded-lg shrink-0">
+                    <Icon className="w-8 h-8" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-start justify-between mb-2">
+                      <h3 className="text-xl">{achievement.title}</h3>
+                      <span className="text-red-500">{achievement.year}</span>
+                    </div>
+                    <p className="text-gray-400">{achievement.description}</p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+components/Contact.tsx
+tsx
+import { Mail, Instagram, Youtube, Twitter, MessageCircle } from "lucide-react";
+export function Contact() {
+  return (
+    <div id="contact" className="py-24 px-8 md:px-12 lg:px-16 bg-black">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-16 items-center">
+          <div className="space-y-6">
+            <div className="text-red-500 uppercase tracking-widest">Get In Touch</div>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl">
+              Ready to Start
+              <br />
+              Your Journey?
+            </h2>
+            <p className="text-gray-300 text-xl">
+              Whether you're looking for personalized coaching, have questions about my programs, or want to collaborate, I'd love to hear from you.
+            </p>
+            <div className="space-y-4 pt-6">
+              <a href="mailto:contact@jordanmatthews.com" className="flex items-center gap-4 text-gray-300 hover:text-red-500 transition-colors">
+                <Mail className="w-6 h-6" />
+                <span>contact@jordanmatthews.com</span>
+              </a>
+              <a href="#" className="flex items-center gap-4 text-gray-300 hover:text-red-500 transition-colors">
+                <MessageCircle className="w-6 h-6" />
+                <span>Book a Consultation</span>
+              </a>
+            </div>
+            <div className="pt-8">
+              <div className="text-gray-400 mb-4">Follow My Journey</div>
+              <div className="flex gap-4">
+                <a href="#" className="bg-zinc-900 hover:bg-red-500 transition-colors p-4 rounded-lg">
+                  <Instagram className="w-6 h-6" />
+                </a>
+                <a href="#" className="bg-zinc-900 hover:bg-red-500 transition-colors p-4 rounded-lg">
+                  <Youtube className="w-6 h-6" />
+                </a>
+                <a href="#" className="bg-zinc-900 hover:bg-red-500 transition-colors p-4 rounded-lg">
+                  <Twitter className="w-6 h-6" />
+                </a>
+              </div>
+            </div>
+          </div>
+          <div className="bg-zinc-900 p-8 rounded-lg">
+            <form className="space-y-6">
+              <div>
+                <label className="block mb-2 text-gray-400">Name</label>
+                <input
+                  type="text"
+                  placeholder="Your name"
+                  className="w-full bg-black border border-zinc-800 rounded-lg px-4 py-3 focus:outline-none focus:border-red-500 transition-colors"
+                />
+              </div>
+              <div>
+                <label className="block mb-2 text-gray-400">Email</label>
+                <input
+                  type="email"
+                  placeholder="your.email@example.com"
+                  className="w-full bg-black border border-zinc-800 rounded-lg px-4 py-3 focus:outline-none focus:border-red-500 transition-colors"
+                />
+              </div>
+              <div>
+                <label className="block mb-2 text-gray-400">Message</label>
+                <textarea
+                  rows={5}
+                  placeholder="Tell me about your goals..."
+                  className="w-full bg-black border border-zinc-800 rounded-lg px-4 py-3 focus:outline-none focus:border-red-500 transition-colors resize-none"
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                className="w-full bg-red-500 hover:bg-red-600 transition-colors px-8 py-4 uppercase tracking-wider"
+              >
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+        <div className="border-t border-zinc-800 mt-24 pt-8 text-center text-gray-500">
+          <p>&copy; 2024 Jordan Matthews. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  );
+}
